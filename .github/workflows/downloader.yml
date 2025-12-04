@@ -30,7 +30,8 @@ jobs:
       - name: Pull Docker image
         run: |
           echo "FullName=${{ env.ImageName }}:${{ env.Tag }}" >> $GITHUB_ENV
-          docker pull ${{ env.FullName }}
+          echo $FullName
+          "docker pull ${{ env.FullName }}"
   
       - name: Save Docker image to tar file
         run: |
