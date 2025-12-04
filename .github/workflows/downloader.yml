@@ -24,13 +24,13 @@ jobs:
     env:
       ImageName: yantaocheng/embynginx
       Tag: beta
-      FullName: "${{ env.ImageName }}:${{ env.Tag }}"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Pull Docker image
-        run: 
-          docker pull $ImageName:$Tag
+        run: |
+          echo "FullName=${{ env.ImageName }}:${{ env.Tag }}" >> $GITHUB_ENV
+          docker pull $FullName
   
       - name: Save Docker image to tar file
         run: |
