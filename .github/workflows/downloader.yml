@@ -30,12 +30,12 @@ jobs:
       - name: Pull Docker image
         run: |
           echo "FullName=${{ env.ImageName }}:${{ env.Tag }}" >> $GITHUB_ENV
-          docker pull $FullName
+          docker pull ${{ env.FullName }}
   
       - name: Save Docker image to tar file
         run: |
           echo "LocalName=${FullName//\//_}" >> $GITHUB_ENV
-          docker save -o ${{ env.LocalName }}.tar $FullName
+          docker save -o ${{ env.LocalName }}.tar ${{ env.FullName }}
   
       - name: Create a PreRelease and upload docker image
         uses: Hs1r1us/Release-AIO@v2.0.0
